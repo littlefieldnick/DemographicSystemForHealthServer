@@ -47,4 +47,9 @@ public class InMemoryIndividualRepository implements IndividualRepository {
 		return this.INDIVIDUAL_ID_SEQUENCE++;
 	}
 
+	@Override
+	public void delete(long id) {
+		this.individualDatabase.remove(id);
+	}
+
 }

@@ -9,4 +9,5 @@ public interface IndividualService
     List<Individual> getAllIndividuals();
     Individual getIndividual(long id);
     void save(Individual individual);
+    void remove(long id);
 }

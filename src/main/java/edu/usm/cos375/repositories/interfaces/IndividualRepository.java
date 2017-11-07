@@ -8,4 +8,5 @@ public interface IndividualRepository {
     Individual get(long id);
     void add(Individual individual);
     void update(Individual individual);
+    void delete(long id);
 }
