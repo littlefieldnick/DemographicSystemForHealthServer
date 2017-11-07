@@ -8,6 +8,7 @@ import java.util.Date;
  */
 
 public class Individual {
+	private long id;		//For purposes of temporary in memory storage
 	private Date dob;
 	private String dobAspect;
 	private String firstName;
@@ -41,6 +42,14 @@ public class Individual {
 		this.pointOfContactName = pointOfContactName;
 		this.pointOfContactPhoneNumber = pointOfContactPhoneNumber;
 		this.nationality = nationality; 
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public Date getDob() {

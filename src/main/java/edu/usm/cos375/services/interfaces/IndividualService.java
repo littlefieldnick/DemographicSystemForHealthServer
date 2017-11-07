@@ -7,6 +7,6 @@ import edu.usm.cos375.model.Individual;
 public interface IndividualService
 {
     List<Individual> getAllIndividuals();
-    Individual getTicket(long id);
+    Individual getIndividual(long id);
     void save(Individual individual);
 }
