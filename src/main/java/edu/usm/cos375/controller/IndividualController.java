@@ -1,11 +1,12 @@
 package edu.usm.cos375.controller;
-import edu.usm.cos375.services.interfaces.*;
 import edu.usm.cos375.model.*;
-import org.springframework.stereotype.Controller;
+import edu.usm.cos375.service.IndividualService;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,13 +18,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
-@Controller
-@RequestMapping("individuals")
+@RestController
+@RequestMapping("/individuals")
 public class IndividualController {
 
 	@Inject IndividualService individualService;
@@ -32,7 +29,7 @@ public class IndividualController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Individual>> getAll(){
 		List<Individual> individuals = individualService.getAllIndividuals();
-		if(individuals == null|| individuals.isEmpty()) {
+		if(individuals == null || individuals.isEmpty()) {
 			return new ResponseEntity<List<Individual>>(HttpStatus.NO_CONTENT);
 		}
 
@@ -41,14 +38,15 @@ public class IndividualController {
 
 	//Find an individual by their id
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public ResponseEntity<Individual> get(@PathVariable("id") int id){
-		Individual individual = individualService.getIndividual(id);
+    public ResponseEntity<Individual> get(@PathVariable("id") long id){
+        Individual individual = individualService.getIndividual(id);
 
-		if(individual == null) {
-			return new ResponseEntity<Individual>(HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<Individual>(individual, HttpStatus.OK);
-	}
+        if (individual == null){
+            return new ResponseEntity<Individual>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<Individual>(individual, HttpStatus.OK);
+    }
 
 	//Add an individual 
 	@RequestMapping(method = RequestMethod.POST)
@@ -57,9 +55,9 @@ public class IndividualController {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 
-		individualService.save(individual);
+		individualService.add(individual);
 		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(individual.getId()).toUri());
+		headers.setLocation(ucBuilder.path("/individuals/{id}").buildAndExpand(individual.getId()).toUri());
 
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
@@ -73,14 +71,15 @@ public class IndividualController {
 			return new ResponseEntity<Individual>(HttpStatus.NOT_FOUND);
 		}
 
-		individualService.save(individual);
-		updateIndividual = individualService.getIndividual(id);
+		
+		individualService.update(individual);
+		updateIndividual = individualService.getIndividual((long) id);
 
 		return new ResponseEntity<Individual>(updateIndividual, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable("id") int id){
+	public ResponseEntity<Void> delete(@PathVariable("id") long id){
 		Individual individual = individualService.getIndividual(id);
 		if (individual == null){
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);

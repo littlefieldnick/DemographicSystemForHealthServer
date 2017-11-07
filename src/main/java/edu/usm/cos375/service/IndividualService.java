@@ -1,4 +1,4 @@
-package edu.usm.cos375.services.interfaces;
+package edu.usm.cos375.service;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ public interface IndividualService
 {
     List<Individual> getAllIndividuals();
     Individual getIndividual(long id);
-    void save(Individual individual);
+    void add(Individual individual);
+    void update(Individual individual);
     void remove(long id);
 }

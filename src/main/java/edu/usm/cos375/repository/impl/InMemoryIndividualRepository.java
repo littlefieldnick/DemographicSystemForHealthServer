@@ -1,4 +1,4 @@
-package edu.usm.cos375.repositories;
+package edu.usm.cos375.repository.impl;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import edu.usm.cos375.model.Individual;
-import edu.usm.cos375.repositories.interfaces.IndividualRepository;
+import edu.usm.cos375.repository.IndividualRepository;
 
 @Repository
 public class InMemoryIndividualRepository implements IndividualRepository {
@@ -73,6 +73,15 @@ public class InMemoryIndividualRepository implements IndividualRepository {
 		individual.setNationality("American");
 		
 		this.add(individual);
+	}
+
+
+	@Override
+	public boolean contains(long id) {
+		if(individualDatabase.containsKey(id))
+			return true;
+		
+		return false;
 	}
 
 }

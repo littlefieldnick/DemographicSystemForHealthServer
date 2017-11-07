@@ -4,7 +4,7 @@ import java.util.Date;
 /*
  * Individual class represents a single individual in the initial census. 
  * 
- * NOTE: Membership, residency, pregnancy, relationship, and membership episodes, will need to be added once implemented. 
+ * TODO: Membership, residency, pregnancy, relationship, and membership episodes, will need to be added once implemented. 
  */
 
 public class Individual {
