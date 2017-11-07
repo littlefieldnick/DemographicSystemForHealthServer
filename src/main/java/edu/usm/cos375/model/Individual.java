@@ -22,26 +22,9 @@ public class Individual {
 	private String pointOfContactName;
 	private String pointOfContactPhoneNumber;
 	private String nationality;
-	
-	public Individual(Date dob, String dobAspect, String firstName, String middleName, String lastName, 
-			String gender, int age, String phoneNumber, String otherPhoneNumber,
-			String languagePreference, String pointOfContactName, String pointOfContactPhoneNumber,
-			String nationality)
-	{
-	
-		this.dob = dob;
-		this.dobAspect = dobAspect;
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-		this.gender = gender;
-		this.age = age; 
-		this.phoneNumber = phoneNumber;
-		this.otherPhoneNumber = otherPhoneNumber;
-		this.languagePreference = languagePreference; 
-		this.pointOfContactName = pointOfContactName;
-		this.pointOfContactPhoneNumber = pointOfContactPhoneNumber;
-		this.nationality = nationality; 
+
+	public Individual() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public long getId() {

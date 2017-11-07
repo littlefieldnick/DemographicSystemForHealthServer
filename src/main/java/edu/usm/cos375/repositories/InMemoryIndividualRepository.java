@@ -1,6 +1,9 @@
 package edu.usm.cos375.repositories;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +22,10 @@ public class InMemoryIndividualRepository implements IndividualRepository {
 
 	private final Map<Long, Individual> individualDatabase = new LinkedHashMap<>();
 
+	public InMemoryIndividualRepository(){
+		loadStoredData();
+	}
+	
 
 	@Override
 	public List<Individual> getAll() {
@@ -50,6 +57,22 @@ public class InMemoryIndividualRepository implements IndividualRepository {
 	@Override
 	public void delete(long id) {
 		this.individualDatabase.remove(id);
+	}
+	
+	public void loadStoredData() {
+		Individual individual = new Individual();
+		
+		individual.setDob(new Date());
+		individual.setFirstName("Nick");
+		individual.setMiddleName("Gerald");
+		individual.setLastName("Littlefield");
+		individual.setGender("male");
+		individual.setAge(22);
+		individual.setPhoneNumber("207-239-9999");
+		individual.setLanguagePreference("English");
+		individual.setNationality("American");
+		
+		this.add(individual);
 	}
 
 }
