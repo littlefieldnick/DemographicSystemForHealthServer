@@ -18,15 +18,12 @@ public class InMemoryIndividualRepository implements IndividualRepository {
 
 	private volatile long INDIVIDUAL_ID_SEQUENCE = 1L;
 
-
-
-	private final Map<Long, Individual> individualDatabase = new LinkedHashMap<>();
+	private static final Map<Long, Individual> individualDatabase = new LinkedHashMap<>();
 
 	public InMemoryIndividualRepository(){
-		loadStoredData();
+		loadStoredData();	//Load static data
 	}
 	
-
 	@Override
 	public List<Individual> getAll() {
 		return new ArrayList<>(this.individualDatabase.values());
@@ -71,6 +68,38 @@ public class InMemoryIndividualRepository implements IndividualRepository {
 		individual.setPhoneNumber("207-239-9999");
 		individual.setLanguagePreference("English");
 		individual.setNationality("American");
+		
+		this.add(individual);
+		
+		individual = new Individual();
+		
+		individual.setDob(new Date());
+		individual.setFirstName("John");
+		individual.setMiddleName("");
+		individual.setLastName("Smith");
+		individual.setGender("male");
+		individual.setAge(48);
+		individual.setPhoneNumber("607-777-9980");
+		individual.setLanguagePreference("English");
+		individual.setNationality("American");
+		individual.setPointOfContactName("Jane Smith");
+		individual.setPointOfContactPhoneNumber("607-777-9981");
+		
+		this.add(individual);
+		
+		individual = new Individual();
+		individual.setDob(new Date());
+		individual.setFirstName("Jane");
+		individual.setMiddleName("Elizabeth");
+		individual.setLastName("Smith");
+		individual.setGender("female");
+		individual.setAge(52);
+		individual.setPhoneNumber("607-777-9981");
+		individual.setOtherPhoneNumber("607-767-9976");
+		individual.setLanguagePreference("English");
+		individual.setNationality("American");
+		individual.setPointOfContactName("John Smith");
+		individual.setPointOfContactPhoneNumber("607-777-9980");
 		
 		this.add(individual);
 	}
