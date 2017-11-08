@@ -18,7 +18,7 @@ public class InMemoryIndividualRepository implements IndividualRepository {
 
 	private volatile long INDIVIDUAL_ID_SEQUENCE = 1L;
 
-	private static final Map<Long, Individual> individualDatabase = new LinkedHashMap<>();
+	private final Map<Long, Individual> individualDatabase = new LinkedHashMap<>();
 
 	public InMemoryIndividualRepository(){
 		loadStoredData();	//Load static data
@@ -58,8 +58,9 @@ public class InMemoryIndividualRepository implements IndividualRepository {
 	
 	public void loadStoredData() {
 		Individual individual = new Individual();
-		
-		individual.setDob(new Date());
+		Calendar cal = Calendar.getInstance();
+		cal.set(1995, 1, 24);
+		individual.setDob(cal.getTime());
 		individual.setFirstName("Nick");
 		individual.setMiddleName("Gerald");
 		individual.setLastName("Littlefield");
@@ -72,8 +73,9 @@ public class InMemoryIndividualRepository implements IndividualRepository {
 		this.add(individual);
 		
 		individual = new Individual();
-		
-		individual.setDob(new Date());
+		cal = Calendar.getInstance();
+		cal.set(1969, 7, 2);
+		individual.setDob(cal.getTime());
 		individual.setFirstName("John");
 		individual.setMiddleName("");
 		individual.setLastName("Smith");
@@ -88,7 +90,9 @@ public class InMemoryIndividualRepository implements IndividualRepository {
 		this.add(individual);
 		
 		individual = new Individual();
-		individual.setDob(new Date());
+		cal = Calendar.getInstance();
+		cal.set(1965, 10, 19);
+		individual.setDob(cal.getTime());
 		individual.setFirstName("Jane");
 		individual.setMiddleName("Elizabeth");
 		individual.setLastName("Smith");
