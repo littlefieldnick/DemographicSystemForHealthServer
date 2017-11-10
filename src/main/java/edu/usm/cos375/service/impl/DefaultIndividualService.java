@@ -16,7 +16,9 @@ public class DefaultIndividualService implements IndividualService {
 	
 	@Override
 	public List<Individual> getAllIndividuals() {
-		return this.individualRepository.getAll();
+		List<Individual> all = this.individualRepository.getAll();
+		all.sort((i1, i2) -> i1.getLastName().compareTo(i2.getLastName()));
+		return all;
 	}
 
 	@Override
@@ -49,5 +51,4 @@ public class DefaultIndividualService implements IndividualService {
 	public boolean contains(long id) {
 		return this.individualRepository.contains(id);
 	}
-
 }
