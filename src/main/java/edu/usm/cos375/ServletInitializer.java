@@ -5,26 +5,29 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import javax.servlet.Filter;
 
-public class ServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-
+public class ServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer
+{
     @Override
-    protected Class<?>[] getServletConfigClasses() {
+    protected Class<?>[] getServletConfigClasses()
+    {
         return new Class[] { WebConfig.class };
     }
 
     @Override
-    protected String[] getServletMappings() {
+    protected String[] getServletMappings()
+    {
         return new String[] { "/" };
     }
 
     @Override
-    protected Class<?>[] getRootConfigClasses() {
+    protected Class<?>[] getRootConfigClasses()
+    {
         return null;
     }
 
     @Override
-    protected Filter[] getServletFilters() {
-        return new Filter[]{ new CORSFilter()};
+    protected Filter[] getServletFilters()
+    {
+        return new Filter[] { new CORSFilter() };
     }
-
 }
