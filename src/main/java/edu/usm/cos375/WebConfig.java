@@ -10,5 +10,4 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan("edu.usm.cos375")
 public class WebConfig extends WebMvcConfigurerAdapter
 {
-
 }
