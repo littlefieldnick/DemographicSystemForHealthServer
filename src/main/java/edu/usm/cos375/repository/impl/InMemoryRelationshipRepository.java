@@ -5,26 +5,45 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import edu.usm.cos375.model.Relationship;
 import edu.usm.cos375.repository.RelationshipRepository;
+import edu.usm.cos375.service.impl.DefaultIndividualService;
 
 public class InMemoryRelationshipRepository implements RelationshipRepository {
-	private volatile long RELATIONSHIP_ID_SEQUENCE = 1L;
+	private static volatile long RELATIONSHIP_ID_SEQUENCE = 1L;
 
-	private final Map<Long, Relationship> relationshipDatabase = new LinkedHashMap<>();
+	private final static Map<Long, Relationship> relationshipDatabase = new LinkedHashMap<>();
 	
 	static {
+		DefaultIndividualService service = new DefaultIndividualService();
+		Relationship r = new Relationship();
+		r.setId(RELATIONSHIP_ID_SEQUENCE);
+		r.setIndividualA(service.getIndividual(1));
+		r.setIndividualB(service.getIndividual(2));
+		r.setStartDate(null);
+		r.setaIsToB("Married");
 		
+		relationshipDatabase.put(RELATIONSHIP_ID_SEQUENCE, r);
+		
+		getNextRelationshipId();
+		r = new Relationship();
+		r.setId(RELATIONSHIP_ID_SEQUENCE);
+		r.setIndividualA(service.getIndividual(2));
+		r.setIndividualB(service.getIndividual(1));
+		r.setStartDate(null);
+		r.setaIsToB("Married");
+		relationshipDatabase.put(RELATIONSHIP_ID_SEQUENCE, r);
 	}
 
 	@Override
 	public List<Relationship> getAll() {
-		return new ArrayList<>(this.relationshipDatabase.values());
+		return new ArrayList<>(relationshipDatabase.values());
 	}
 
 	@Override
 	public Relationship get(long id) {
-		return this.relationshipDatabase.get(id);
+		return relationshipDatabase.get(id);
 	}
 
 	@Override
@@ -38,25 +57,24 @@ public class InMemoryRelationshipRepository implements RelationshipRepository {
 	@Override
 	public void add(Relationship r) {
 		r.setId(this.getNextRelationshipId());
-		this.relationshipDatabase.put(r.getId(), r);
-
-		
+		relationshipDatabase.put(r.getId(), r);
 	}
 
 	@Override
 	public void update(Relationship r) {
-		this.relationshipDatabase.put(r.getId(), r);	
+		relationshipDatabase.put(r.getId(), r);	
 		
 	}
 
 	@Override
 	public void delete(long id) {
-		this.relationshipDatabase.remove(id);	
+		relationshipDatabase.remove(id);	
 		
 	}
 	
-	private synchronized long getNextRelationshipId()
+	
+	private static synchronized long getNextRelationshipId()
 	{
-		return this.RELATIONSHIP_ID_SEQUENCE++;
+		return RELATIONSHIP_ID_SEQUENCE++;
 	}
 }
