@@ -7,9 +7,9 @@ import edu.usm.cos375.model.Individual;
 
 public interface RelationshipService
 {
-    List<Relationship> getAllIndividuals();
-    Relationship getRelationshipA(Individual individualA);
-    void add(Individual individual);
-    void update(Individual individual);
+    void create(Relationship r);
+    void read(long id);
+    void readAll();
+    void update(long id, Relationship r);
     void remove(long id);
 }

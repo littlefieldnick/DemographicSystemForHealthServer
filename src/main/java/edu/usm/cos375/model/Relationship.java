@@ -5,6 +5,7 @@ import java.util.Calendar;
 public class Relationship {
 	//TODO: Implement services, repository, and controller. Add validation
 	
+	long id;
 	Individual individualA;
 	Individual individualB;
 	
@@ -61,6 +62,15 @@ public class Relationship {
 
 	public void setEndType(String endType) {
 		this.endType = endType;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+		
+	}
+
+	public Long getId() {
+		return this.id;
 	}
 	
 }
