@@ -4,6 +4,7 @@ public class Fieldworker extends AuditableEntity {
 
 	private static final long serialVersionUID = -2635197895396416285L;
 
+	long id;
 	String extId;
 	String firstName;
 	String lastName;
@@ -65,5 +66,13 @@ public class Fieldworker extends AuditableEntity {
 	
 	public void setIdPrefix(int idPrefix) {
 		this.idPrefix = idPrefix;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 }
