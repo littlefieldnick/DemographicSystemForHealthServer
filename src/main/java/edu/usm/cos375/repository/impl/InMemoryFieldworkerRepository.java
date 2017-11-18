@@ -17,6 +17,19 @@ public class InMemoryFieldworkerRepository implements FieldworkerRepository{
 
 	private final static Map<Long, Fieldworker> fieldworkerDatabase = new LinkedHashMap<>();
 	
+	static {
+		Fieldworker f = new Fieldworker();
+		f.setFirstName("Nickolas");
+		f.setLastName("Littlefield");
+		f.setPassword("pass1234");
+		f.setConfirmPassword("pass123");
+		f.setPasswordHash(""+ f.getPassword().hashCode());
+		f.setIdPrefix(045);
+		f.setId(FIELDWORKER_ID_SEQUENCE);
+		getNextFieldworkerId();
+		fieldworkerDatabase.put(f.getId(),f);
+	}
+	
 	@Override
 	public List<Fieldworker> getAll() {
 		return new ArrayList<>(fieldworkerDatabase.values());
