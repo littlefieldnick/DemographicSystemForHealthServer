@@ -47,7 +47,7 @@ public class InMemoryFieldworkerRepository implements FieldworkerRepository{
 
 	@Override
 	public void delete(long id) {
-		fieldworkerDatabase.remove(id);x
+		fieldworkerDatabase.remove(id);
 		
 	}
 	
