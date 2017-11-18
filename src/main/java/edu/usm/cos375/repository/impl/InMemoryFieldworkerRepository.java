@@ -5,9 +5,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import edu.usm.cos375.model.Fieldworker;
 import edu.usm.cos375.repository.FieldworkerRepository;
 
+@Repository
 public class InMemoryFieldworkerRepository implements FieldworkerRepository{
 
 	private static volatile long FIELDWORKER_ID_SEQUENCE = 1L;
