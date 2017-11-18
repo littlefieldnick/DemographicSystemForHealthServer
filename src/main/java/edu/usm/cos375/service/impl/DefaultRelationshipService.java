@@ -2,10 +2,14 @@ package edu.usm.cos375.service.impl;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import edu.usm.cos375.model.Relationship;
 import edu.usm.cos375.repository.RelationshipRepository;
 import edu.usm.cos375.service.RelationshipService;
 import java.util.*;
+
+@Service
 public class DefaultRelationshipService implements RelationshipService{
 
 	@Inject RelationshipRepository relationshipRepository;

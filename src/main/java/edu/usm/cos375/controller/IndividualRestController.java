@@ -11,12 +11,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 
 import javax.inject.Inject;
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController

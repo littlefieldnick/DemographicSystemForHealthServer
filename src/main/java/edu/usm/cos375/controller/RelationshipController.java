@@ -1,5 +1,5 @@
 package edu.usm.cos375.controller;
-import edu.usm.cos375.model.*;
+import edu.usm.cos375.model.Relationship;
 import edu.usm.cos375.service.RelationshipService;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,21 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import javax.inject.Inject;
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("rest/relationships")
 public class RelationshipController {
 
-	@Autowired RelationshipService relationshipService;
+	@Inject RelationshipService relationshipService;
 
 	//Get all the current relationships
 	@RequestMapping(method = RequestMethod.GET)
