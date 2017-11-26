@@ -1,7 +1,6 @@
 package edu.usm.cos375.service.impl;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.usm.cos375.model.Relationship;
@@ -12,27 +11,26 @@ import java.util.*;
 @Service
 public class DefaultRelationshipService implements RelationshipService{
 
-	@Inject RelationshipRepository relationshipRepository;
+	@Autowired 
+	RelationshipRepository repository;
 	
 	@Override
 	public void create(Relationship r) {
-		if(relationshipRepository.contains(r.getId())) {
-			relationshipRepository.update(r);
-		} else {
-			relationshipRepository.add(r);
-		}
+		repository.save(r);
 		
 	}
 
 	@Override
 	public Relationship read(long id) {
-		Relationship r = this.relationshipRepository.get(id);
+		Relationship r = this.repository.findOne(id);
 		return r;		
 	}
 
 	@Override
 	public List<Relationship> readAll() {
-		List<Relationship> all = this.relationshipRepository.getAll();
+		List<Relationship> all = new ArrayList<Relationship>();
+		Iterable<Relationship> relationships = this.repository.findAll();
+		relationships.forEach(all::add);
 		all.sort((i1, i2) -> i1.getId().compareTo(i2.getId()));
 		return all;
 		
@@ -40,15 +38,13 @@ public class DefaultRelationshipService implements RelationshipService{
 
 	@Override
 	public void update(long id, Relationship r) {
-		if(relationshipRepository.get(id) != null) {
-			this.relationshipRepository.update(r);
-		}
+		this.repository.save(r);
 		
 	}
 
 	@Override
 	public void remove(long id) {
-		this.relationshipRepository.delete(id);
+		this.repository.delete(id);
 		
 	}
 

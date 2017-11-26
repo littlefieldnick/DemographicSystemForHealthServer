@@ -1,16 +1,39 @@
 package edu.usm.cos375.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name="fieldworker")
 public class Fieldworker extends AuditableEntity {
 
 	private static final long serialVersionUID = -2635197895396416285L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	long id;
+	
 	String extId;
+	
 	String firstName;
+	
 	String lastName;
+	
 	String password;
+	
+
 	String confirmPassword;
+	
+	@NotNull
 	String passwordHash;
+	
+
 	int idPrefix;
 	
 	public String getExtId() {

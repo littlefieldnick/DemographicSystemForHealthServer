@@ -2,6 +2,7 @@ package edu.usm.cos375.model;
 
 import java.io.Serializable;
 
+
 public class Privilege implements Serializable {
 
 	private static final long serialVersionUID = -290267212241877136L;

@@ -14,8 +14,20 @@ import javax.persistence.*;
  * TODO: Implement additional validation.
  */
 
-public class Individual {
+@Entity
+@Table(name="individual")
+public class Individual extends AuditableCollectedEntity {
+
+	
+	private static final long serialVersionUID = -424712868173326154L;
+
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;		//For purposes of temporary in memory storage
+	
+	
+	private String extId;
 	
 	@Past
 	private Date dob;
@@ -32,22 +44,48 @@ public class Individual {
 	
 	@NotNull
 	private String gender;
+	
+	@Column
 	private Individual mother;
+	
+	@Column
 	private Individual father;
+	
+	@Column
 	private int age;
-	private String ageUnits;
+	
+	@Column
 	private String phoneNumber;
+	
+	@Column
 	private String otherPhoneNumber;
+	
+	@Column
 	private String languagePreference;
+	
+	@Column
 	private String pointOfContactName;
+	
+	@Column
 	private String pointOfContactPhoneNumber;
+	
+	@Column
 	private String dip;
-	private String membershipStatus;
+
+	@Column
 	private String nationality;
-	private Set <Residency> residencies = new HashSet<>();
-	private Set<Relationship> relationshipA = new HashSet<>();
-	private Set<Relationship> relationshipB = new HashSet<>();
-	private Set<Membership> memberships = new HashSet<>();
+	
+//	@OneToMany(mappedBy="individual",cascade=CascadeType.ALL)
+//	private Set <Residency> residencies = new HashSet<>();
+//	
+//	@OneToMany(mappedBy="individualA",cascade=CascadeType.ALL)
+//	private Set<Relationship> relationshipA = new HashSet<>();
+//	
+//	@OneToMany(mappedBy="individualB",cascade=CascadeType.ALL)
+//	private Set<Relationship> relationshipB = new HashSet<>();
+//	
+//	@OneToMany(mappedBy="individual",cascade=CascadeType.ALL)
+//	private Set<Membership> memberships = new HashSet<>();
 	
 	public long getId() {
 		return id;
@@ -177,45 +215,37 @@ public class Individual {
 		this.nationality = nationality;
 	}
 	
-	public Set<Residency> getResidencies() {
-		return residencies;
-	}
-
-	public void setResidencies(Set<Residency> residencies) {
-		this.residencies = residencies;
-	}
-
-	public Set<Relationship> getRelationshipA() {
-		return relationshipA;
-	}
-
-	public void setRelationshipA(Set<Relationship> relationshipA) {
-		this.relationshipA = relationshipA;
-	}
-
-	public Set<Relationship> getRelationshipB() {
-		return relationshipB;
-	}
-
-	public void setRelationshipB(Set<Relationship> relationshipB) {
-		this.relationshipB = relationshipB;
-	}
-
-	public Set<Membership> getMemberships() {
-		return memberships;
-	}
-
-	public void setMemberships(Set<Membership> membership) {
-		this.memberships = membership;
-	}
-
-	public String getAgeUnits() {
-		return ageUnits;
-	}
-
-	public void setAgeUnits(String ageUnits) {
-		this.ageUnits = ageUnits;
-	}
+//	public Set<Residency> getResidencies() {
+//		return residencies;
+//	}
+//
+//	public void setResidencies(Set<Residency> residencies) {
+//		this.residencies = residencies;
+//	}
+//
+//	public Set<Relationship> getRelationshipA() {
+//		return relationshipA;
+//	}
+//
+//	public void setRelationshipA(Set<Relationship> relationshipA) {
+//		this.relationshipA = relationshipA;
+//	}
+//
+//	public Set<Relationship> getRelationshipB() {
+//		return relationshipB;
+//	}
+//
+//	public void setRelationshipB(Set<Relationship> relationshipB) {
+//		this.relationshipB = relationshipB;
+//	}
+//
+//	public Set<Membership> getMemberships() {
+//		return memberships;
+//	}
+//
+//	public void setMemberships(Set<Membership> membership) {
+//		this.memberships = membership;
+//	}
 
 	public String getDip() {
 		return dip;
@@ -225,11 +255,4 @@ public class Individual {
 		this.dip = dip;
 	}
 
-	public String getMembershipStatus() {
-		return membershipStatus;
-	}
-
-	public void setMembershipStatus(String membershipStatus) {
-		this.membershipStatus = membershipStatus;
-	}	
 }

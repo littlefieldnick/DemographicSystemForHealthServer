@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
 public class User implements Serializable, UuidIdentifiable{
 
 	private static final long serialVersionUID = -4248049670490694695L;
