@@ -2,57 +2,83 @@ package edu.usm.cos375.model;
 
 import java.util.Calendar;
 
-//TODO: Implement services, repository, and controller.
-
-public class Residency {
-	Individual individual;
-	//Location location; //Leave commented out until implemented
+public class Residency
+{
+	private Long uuid;
+	private Individual individual;
+	private Location location;
+	private Calendar startDate;
+	private Calendar endDate;
+	private String startType;
+	private String endType;
 	
-	Calendar startDate;
-	Calendar endDate;
+	public Long getUuid()
+	{
+		return this.uuid;
+	}
 	
-	String startType;
-	String endType;
+	public void setUuid(long uuid)
+	{
+		this.uuid = uuid;
+	}
 	
-	public Individual getIndividual() {
+	public Individual getIndividual()
+	{
 		return individual;
 	}
 	
-	public void setIndividual(Individual individual) {
+	public void setIndividual(Individual individual)
+	{
 		this.individual = individual;
 	}
 	
-	public Calendar getStartDate() {
+	public Location getLocation()
+	{
+		return location;
+	}
+
+	public void setLocation(Location location)
+	{
+		this.location = location;
+	}
+
+	public Calendar getStartDate()
+	{
 		return startDate;
 	}
 	
-	public void setStartDate(Calendar startDate) {
+	public void setStartDate(Calendar startDate)
+	{
 		this.startDate = startDate;
 	}
 	
-	public Calendar getEndDate() {
+	public Calendar getEndDate()
+	{
 		return endDate;
 	}
 	
-	public void setEndDate(Calendar endDate) {
+	public void setEndDate(Calendar endDate)
+	{
 		this.endDate = endDate;
 	}
 	
-	public String getStartType() {
+	public String getStartType()
+	{
 		return startType;
 	}
 	
-	public void setStartType(String startType) {
+	public void setStartType(String startType)
+	{
 		this.startType = startType;
 	}
 	
-	public String getEndType() {
+	public String getEndType()
+	{
 		return endType;
 	}
 	
-	public void setEndType(String endType) {
+	public void setEndType(String endType)
+	{
 		this.endType = endType;
 	}
-	
-	
 }

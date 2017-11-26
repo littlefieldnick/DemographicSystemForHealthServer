@@ -3,7 +3,6 @@ package edu.usm.cos375.repository.impl;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
