@@ -1,5 +1,4 @@
 package edu.usm.cos375.controller;
-import edu.usm.cos375.annotation.RestEndpoint;
 import edu.usm.cos375.exception.ResourceNotFoundException;
 import edu.usm.cos375.model.*;
 import edu.usm.cos375.service.IndividualService;
@@ -18,7 +17,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 
-@RestEndpoint
+@RestController
 @RequestMapping("/individuals")
 public class IndividualController {
 
