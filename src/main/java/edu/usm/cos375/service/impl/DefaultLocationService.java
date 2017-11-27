@@ -15,7 +15,6 @@ import edu.usm.cos375.service.LocationService;
 @Service
 public class DefaultLocationService implements LocationService
 {
-	@Inject
 	@Autowired
 	LocationRepository repository;
 

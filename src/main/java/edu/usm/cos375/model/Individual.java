@@ -14,7 +14,6 @@ import javax.persistence.*;
  * TODO: Implement additional validation.
  */
 
-public class Individual {
 @Entity
 @Table(name="individual")
 public class Individual extends AuditableCollectedEntity {
@@ -37,7 +36,6 @@ public class Individual extends AuditableCollectedEntity {
 	@NotNull
 	private String firstName;
 	
-	@NotNull
 	private String middleName;
 	
 	@NotNull
@@ -54,7 +52,6 @@ public class Individual extends AuditableCollectedEntity {
 	
 	@Column
 	private int age;
-	private String ageUnits;
 	
 	@Column
 	private String phoneNumber;
@@ -73,14 +70,9 @@ public class Individual extends AuditableCollectedEntity {
 	
 	@Column
 	private String dip;
-	private String membershipStatus;
 
 	@Column
 	private String nationality;
-	private Set <Residency> residencies = new HashSet<>();
-	private Set<Relationship> relationshipA = new HashSet<>();
-	private Set<Relationship> relationshipB = new HashSet<>();
-	private Set<Membership> memberships = new HashSet<>();
 	
 //	@OneToMany(mappedBy="individual",cascade=CascadeType.ALL)
 //	private Set <Residency> residencies = new HashSet<>();
@@ -222,45 +214,6 @@ public class Individual extends AuditableCollectedEntity {
 		this.nationality = nationality;
 	}
 	
-	public Set<Residency> getResidencies() {
-		return residencies;
-	}
-
-	public void setResidencies(Set<Residency> residencies) {
-		this.residencies = residencies;
-	}
-
-	public Set<Relationship> getRelationshipA() {
-		return relationshipA;
-	}
-
-	public void setRelationshipA(Set<Relationship> relationshipA) {
-		this.relationshipA = relationshipA;
-	}
-
-	public Set<Relationship> getRelationshipB() {
-		return relationshipB;
-	}
-
-	public void setRelationshipB(Set<Relationship> relationshipB) {
-		this.relationshipB = relationshipB;
-	}
-
-	public Set<Membership> getMemberships() {
-		return memberships;
-	}
-
-	public void setMemberships(Set<Membership> membership) {
-		this.memberships = membership;
-	}
-
-	public String getAgeUnits() {
-		return ageUnits;
-	}
-
-	public void setAgeUnits(String ageUnits) {
-		this.ageUnits = ageUnits;
-	}
 //	public Set<Residency> getResidencies() {
 //		return residencies;
 //	}
@@ -301,11 +254,4 @@ public class Individual extends AuditableCollectedEntity {
 		this.dip = dip;
 	}
 
-	public String getMembershipStatus() {
-		return membershipStatus;
-	}
-
-	public void setMembershipStatus(String membershipStatus) {
-		this.membershipStatus = membershipStatus;
-	}	
 }
