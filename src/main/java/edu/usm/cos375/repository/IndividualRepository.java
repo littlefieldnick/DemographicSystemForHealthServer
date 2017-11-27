@@ -1,6 +1,8 @@
 package edu.usm.cos375.repository;
 
 import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+
 import edu.usm.cos375.model.Individual;
 
 public interface IndividualRepository {
@@ -10,4 +12,6 @@ public interface IndividualRepository {
     void add(Individual individual);
     void update(Individual individual);
     void delete(long id);
+public interface IndividualRepository extends CrudRepository<Individual, Long> {
+
 }
