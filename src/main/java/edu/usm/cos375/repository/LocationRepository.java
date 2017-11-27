@@ -1,14 +1,9 @@
 package edu.usm.cos375.repository;
 
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 
 import edu.usm.cos375.model.Location;
 
-public interface LocationRepository 
+public interface LocationRepository extends CrudRepository<Location, Long>
 {
-	public void create(Location l);
-	public Location read(Long id);
-	public void update(Location l);
-	public void delete(Long id);
-	public List<Location> getAllLocations();
 }
