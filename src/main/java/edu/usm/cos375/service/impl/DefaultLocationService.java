@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.usm.cos375.model.Location;
@@ -13,7 +14,7 @@ import edu.usm.cos375.service.LocationService;
 @Service
 public class DefaultLocationService implements LocationService
 {
-	@Inject
+	@Autowired
 	LocationRepository repository;
 
 	@Override

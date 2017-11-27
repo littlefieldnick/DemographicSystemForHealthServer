@@ -2,6 +2,7 @@ package edu.usm.cos375.controller;
 import edu.usm.cos375.model.*;
 import edu.usm.cos375.service.FieldworkerService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.inject.Inject;
 import java.util.List;
 
 @RestController
-@RequestMapping("rest/fieldworkers")
+@RequestMapping("/fieldworkers")
 public class FieldworkerController {
 	
-	@Inject FieldworkerService fieldworkerService;
+	@Autowired 
+	FieldworkerService fieldworkerService;
 
 	//Get all the current individuals
 	@RequestMapping(method = RequestMethod.GET)

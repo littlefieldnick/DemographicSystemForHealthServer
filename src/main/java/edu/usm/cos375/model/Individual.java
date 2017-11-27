@@ -36,7 +36,6 @@ public class Individual extends AuditableCollectedEntity {
 	@NotNull
 	private String firstName;
 	
-	@NotNull
 	private String middleName;
 	
 	@NotNull

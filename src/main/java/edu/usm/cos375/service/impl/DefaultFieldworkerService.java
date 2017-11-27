@@ -3,13 +3,11 @@ package edu.usm.cos375.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.usm.cos375.model.Fieldworker;
-import edu.usm.cos375.model.Individual;
 import edu.usm.cos375.repository.FieldworkerRepository;
 import edu.usm.cos375.service.FieldworkerService;
 
