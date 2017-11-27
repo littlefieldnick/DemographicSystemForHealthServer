@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import edu.usm.cos375.model.Relationship;
 
-public interface RelationshipRepository extends CrudRepository<Relationship, Long>{
-
+public interface RelationshipRepository extends CrudRepository<Relationship, Long>
+{
 }

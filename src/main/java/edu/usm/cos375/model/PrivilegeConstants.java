@@ -1,6 +1,7 @@
 package edu.usm.cos375.model;
 
-public class PrivilegeConstants {
+public class PrivilegeConstants
+{
 	//Privileges for a user
 	public final static String NO_ROLE = "NO_ROLE";
 	public final static String CREATE_ENTITY = "CREATE_ENTITY";

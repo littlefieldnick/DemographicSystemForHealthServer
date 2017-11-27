@@ -1,6 +1,6 @@
 package edu.usm.cos375.controller;
-import edu.usm.cos375.model.*;
-import edu.usm.cos375.service.FieldworkerService;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -13,20 +13,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.List;
+import edu.usm.cos375.model.Fieldworker;
+import edu.usm.cos375.service.FieldworkerService;
 
 @RestController
 @RequestMapping("/fieldworkers")
-public class FieldworkerController {
-	
+public class FieldworkerController
+{
 	@Autowired 
 	FieldworkerService fieldworkerService;
 
 	//Get all the current individuals
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Fieldworker>> getAll(){
+	public ResponseEntity<List<Fieldworker>> getAll()
+	{
 		List<Fieldworker> fieldworkers = fieldworkerService.getAllFieldworkers();
-		if(fieldworkers == null || fieldworkers.isEmpty()) {
+		if(fieldworkers == null || fieldworkers.isEmpty())
+		{
 			return new ResponseEntity<List<Fieldworker>>(HttpStatus.NO_CONTENT);
 		}
 
@@ -35,10 +38,12 @@ public class FieldworkerController {
 
 	//Find an individual by their id
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public ResponseEntity<Fieldworker> get(@PathVariable("id") long id){
+	public ResponseEntity<Fieldworker> get(@PathVariable("id") long id)
+	{
 		Fieldworker fieldworker = fieldworkerService.getFieldworker(id);
 
-		if (fieldworker == null){
+		if (fieldworker == null)
+		{
 			return new ResponseEntity<Fieldworker>(HttpStatus.NOT_FOUND);
 		}
 
@@ -47,8 +52,10 @@ public class FieldworkerController {
 
 	//Add an individual 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> create(@RequestBody Fieldworker fieldworker, UriComponentsBuilder ucBuilder){
-		if(fieldworkerService.getFieldworker(fieldworker.getId()) != null) {
+	public ResponseEntity<Void> create(@RequestBody Fieldworker fieldworker, UriComponentsBuilder ucBuilder)
+	{
+		if(fieldworkerService.getFieldworker(fieldworker.getId()) != null)
+		{
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 
@@ -61,13 +68,14 @@ public class FieldworkerController {
 
 	//Update an existing user
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Fieldworker> update(@PathVariable int id, @RequestBody Fieldworker fieldworker){
+	public ResponseEntity<Fieldworker> update(@PathVariable int id, @RequestBody Fieldworker fieldworker)
+	{
 		Fieldworker updateFieldworker = fieldworkerService.getFieldworker(id);
 
-		if(updateFieldworker == null) {
+		if(updateFieldworker == null)
+		{
 			return new ResponseEntity<Fieldworker>(HttpStatus.NOT_FOUND);
 		}
-
 
 		fieldworkerService.update(fieldworker);
 		updateFieldworker = fieldworkerService.getFieldworker((long) id);
@@ -75,11 +83,12 @@ public class FieldworkerController {
 		return new ResponseEntity<Fieldworker>(updateFieldworker, HttpStatus.OK);
 	}
 
-
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable("id") long id){
+	public ResponseEntity<Void> delete(@PathVariable("id") long id)
+	{
 		Fieldworker fieldworker = fieldworkerService.getFieldworker(id);
-		if (fieldworker == null){
+		if (fieldworker == null)
+		{
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
 

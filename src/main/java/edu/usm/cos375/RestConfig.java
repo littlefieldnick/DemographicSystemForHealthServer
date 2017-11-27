@@ -12,6 +12,7 @@ import edu.usm.cos375.annotation.RestAPIControllerAdvice;
 @EnableWebMvc
 @ComponentScan(basePackages= {"edu.usm.cos375.controller"}, useDefaultFilters=false, 
 			   includeFilters= @ComponentScan.Filter({RestController.class, RestAPIControllerAdvice.class}))
-public class RestConfig extends WebMvcConfigurerAdapter{
+public class RestConfig extends WebMvcConfigurerAdapter
+{
 
 }

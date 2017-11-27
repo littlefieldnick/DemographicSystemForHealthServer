@@ -3,7 +3,6 @@ package edu.usm.cos375.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +11,8 @@ import edu.usm.cos375.repository.FieldworkerRepository;
 import edu.usm.cos375.service.FieldworkerService;
 
 @Service
-public class DefaultFieldworkerService implements FieldworkerService {
-
+public class DefaultFieldworkerService implements FieldworkerService
+{
 	@Autowired 
 	FieldworkerRepository repository;
 	
@@ -38,22 +37,17 @@ public class DefaultFieldworkerService implements FieldworkerService {
 	public void add(Fieldworker fieldworker) 
 	{
 		repository.save(fieldworker);
-		
-		
 	}
 
 	@Override
 	public void update(Fieldworker fieldworker) 
 	{
 		repository.save(fieldworker);
-		
 	}
 
 	@Override
 	public void remove(long id) 
 	{
 		this.repository.delete(id);
-		
 	}
-
 }

@@ -11,13 +11,14 @@ import edu.usm.cos375.repository.IndividualRepository;
 import edu.usm.cos375.service.IndividualService;
 
 @Service
-public class DefaultIndividualService implements IndividualService {
-
+public class DefaultIndividualService implements IndividualService
+{
 	@Autowired 
 	IndividualRepository repository;
 	
 	@Override
-	public List<Individual> getAllIndividuals() {
+	public List<Individual> getAllIndividuals()
+	{
 		List<Individual> all = new ArrayList<Individual>();
 		Iterable<Individual> individuals = repository.findAll();
 		individuals.forEach(all::add);
@@ -26,29 +27,31 @@ public class DefaultIndividualService implements IndividualService {
 	}
 
 	@Override
-	public Individual getIndividual(long id) {
+	public Individual getIndividual(long id)
+	{
 		Individual individual = this.repository.findOne(id);
 		return individual;
 	}
 
 	@Override
-	public void update(Individual individual) {
-		
-		this.repository.save(individual);
-
-		
+	public void update(Individual individual)
+	{
+		this.repository.save(individual);		
 	}
 	
-	public void remove(long id) {
+	public void remove(long id)
+	{
 		this.repository.delete(id);
 	}
 
 	@Override
-	public void add(Individual individual) {
+	public void add(Individual individual)
+	{
 		repository.save(individual);
 	}
 	
-	public boolean contains(long id) {
+	public boolean contains(long id)
+	{
 		return this.repository.exists(id);
 	}
 }

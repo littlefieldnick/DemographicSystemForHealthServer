@@ -11,7 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="relationship")
-public class Relationship {
+public class Relationship
+{
 	//TODO: Implement services, repository, and controller. Add validation
 	
 	@Id
@@ -29,61 +30,73 @@ public class Relationship {
 	
 	String endType;
 
-	public Individual getIndividualA() {
+	public Individual getIndividualA()
+	{
 		return individualA;
 	}
 
-	public void setIndividualA(Individual individualA) {
+	public void setIndividualA(Individual individualA)
+	{
 		this.individualA = individualA;
 	}
 
-	public Individual getIndividualB() {
+	public Individual getIndividualB()
+	{
 		return individualB;
 	}
 
-	public void setIndividualB(Individual individualB) {
+	public void setIndividualB(Individual individualB)
+	{
 		this.individualB = individualB;
 	}
 
-	public String getaIsToB() {
+	public String getaIsToB()
+	{
 		return aIsToB;
 	}
 
-	public void setaIsToB(String aIsToB) {
+	public void setaIsToB(String aIsToB)
+	{
 		this.aIsToB = aIsToB;
 	}
 
-	public Calendar getStartDate() {
+	public Calendar getStartDate()
+	{
 		return startDate;
 	}
 
-	public void setStartDate(Calendar startDate) {
+	public void setStartDate(Calendar startDate)
+	{
 		this.startDate = startDate;
 	}
 
-	public Calendar getEndDate() {
+	public Calendar getEndDate()
+	{
 		return endDate;
 	}
 
-	public void setEndDate(Calendar endDate) {
+	public void setEndDate(Calendar endDate)
+	{
 		this.endDate = endDate;
 	}
 
-	public String getEndType() {
+	public String getEndType()
+	{
 		return endType;
 	}
 
-	public void setEndType(String endType) {
+	public void setEndType(String endType)
+	{
 		this.endType = endType;
 	}
 
-	public void setId(long id) {
+	public void setId(long id)
+	{
 		this.id = id;
-		
 	}
 
-	public Long getId() {
+	public Long getId()
+	{
 		return this.id;
 	}
-	
 }

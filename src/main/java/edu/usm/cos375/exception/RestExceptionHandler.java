@@ -19,8 +19,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import edu.usm.cos375.annotation.RestAPIControllerAdvice;
 
 @RestAPIControllerAdvice
-public class RestExceptionHandler {
-
+public class RestExceptionHandler
+{
 	//Handle constraint violations.
 	@ExceptionHandler(ConstraintViolationException.class)
 	public ResponseEntity<ErrorResponse> handle(ConstraintViolationException e)
@@ -39,7 +39,8 @@ public class RestExceptionHandler {
 
 	//Handle the TransactionSystemException thrown when a database violation happens.
 	@ExceptionHandler(TransactionSystemException.class)
-	public ResponseEntity<ErrorResponse> handle(TransactionSystemException e){
+	public ResponseEntity<ErrorResponse> handle(TransactionSystemException e)
+	{
 		ErrorResponse errors = new ErrorResponse();
 		ErrorItem error = new ErrorItem();
 		Throwable t = e.getCause();
@@ -52,7 +53,8 @@ public class RestExceptionHandler {
 	
 	//Handle the TransactionSystemException thrown when a database violation happens.
 	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
-	public ResponseEntity<ErrorResponse> handle(MethodArgumentTypeMismatchException e){
+	public ResponseEntity<ErrorResponse> handle(MethodArgumentTypeMismatchException e)
+	{
 		ErrorResponse errors = new ErrorResponse();
 		ErrorItem error = new ErrorItem();
 		Throwable t = e.getCause();
@@ -73,7 +75,6 @@ public class RestExceptionHandler {
 		{
 			return code;
 		}
-
 
 		public void setCode(String code)
 		{

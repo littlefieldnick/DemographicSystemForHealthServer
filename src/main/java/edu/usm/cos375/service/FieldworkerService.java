@@ -4,7 +4,8 @@ import java.util.List;
 
 import edu.usm.cos375.model.Fieldworker;
 
-public interface FieldworkerService {
+public interface FieldworkerService
+{
 	List<Fieldworker> getAllFieldworkers();
 	Fieldworker getFieldworker(long id);
 	void add(Fieldworker fieldworker);

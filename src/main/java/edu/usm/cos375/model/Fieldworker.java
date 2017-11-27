@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="fieldworker")
-public class Fieldworker extends AuditableEntity {
-
+public class Fieldworker extends AuditableEntity
+{
 	private static final long serialVersionUID = -2635197895396416285L;
 
 	@Id
@@ -20,82 +20,92 @@ public class Fieldworker extends AuditableEntity {
 	long id;
 	
 	String extId;
-	
 	String firstName;
-	
 	String lastName;
-	
 	String password;
-	
-
 	String confirmPassword;
 	
 	@NotNull
 	String passwordHash;
-	
 
 	int idPrefix;
 	
-	public String getExtId() {
+	public String getExtId()
+	{
 		return extId;
 	}
 	
-	public void setExtId(String extId) {
+	public void setExtId(String extId)
+	{
 		this.extId = extId;
 	}
 	
-	public String getFirstName() {
+	public String getFirstName()
+	{
 		return firstName;
 	}
 	
-	public void setFirstName(String firstName) {
+	public void setFirstName(String firstName)
+	{
 		this.firstName = firstName;
 	}
 	
-	public String getLastName() {
+	public String getLastName()
+	{
 		return lastName;
 	}
 	
-	public void setLastName(String lastName) {
+	public void setLastName(String lastName)
+	{
 		this.lastName = lastName;
 	}
 	
-	public String getPassword() {
+	public String getPassword()
+	{
 		return password;
 	}
 	
-	public void setPassword(String password) {
+	public void setPassword(String password)
+	{
 		this.password = password;
 	}
 	
-	public String getConfirmPassword() {
+	public String getConfirmPassword()
+	{
 		return confirmPassword;
 	}
 	
-	public void setConfirmPassword(String confirmPassword) {
+	public void setConfirmPassword(String confirmPassword)
+	{
 		this.confirmPassword = confirmPassword;
 	}
 	
-	public String getPasswordHash() {
+	public String getPasswordHash()
+	{
 		return passwordHash;
 	}
 	
-	public void setPasswordHash(String passwordHash) {
+	public void setPasswordHash(String passwordHash)
+	{
 		this.passwordHash = passwordHash;
 	}
-	public int getIdPrefix() {
+	public int getIdPrefix()
+	{
 		return idPrefix;
 	}
 	
-	public void setIdPrefix(int idPrefix) {
+	public void setIdPrefix(int idPrefix)
+	{
 		this.idPrefix = idPrefix;
 	}
 
-	public long getId() {
+	public long getId()
+	{
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(long id)
+	{
 		this.id = id;
 	}
 }

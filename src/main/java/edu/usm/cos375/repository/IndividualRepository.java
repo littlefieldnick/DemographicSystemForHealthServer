@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import edu.usm.cos375.model.Individual;
 
-public interface IndividualRepository extends CrudRepository<Individual, Long> {
-
+public interface IndividualRepository extends CrudRepository<Individual, Long>
+{
 }

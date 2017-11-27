@@ -9,7 +9,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="membership")
-public class Membership {
+public class Membership
+{
 	//TODO: Implement class fields, services, repository, and controller. Add validation
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,5 +18,4 @@ public class Membership {
 	long id;
 	
 	Individual individual;
-
 }

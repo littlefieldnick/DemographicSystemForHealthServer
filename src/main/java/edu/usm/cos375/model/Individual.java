@@ -1,11 +1,15 @@
 package edu.usm.cos375.model;
 
 import java.util.Date;
-import java.util.Set;
-import java.util.HashSet;
 
-import javax.validation.constraints.*;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 /*
  * Individual class represents a single individual in the initial census. 
@@ -16,16 +20,14 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="individual")
-public class Individual extends AuditableCollectedEntity {
-
-	
+public class Individual extends AuditableCollectedEntity
+{
 	private static final long serialVersionUID = -424712868173326154L;
 
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;		//For purposes of temporary in memory storage
-	
+	private long id; // For purposes of temporary in memory storage
 	
 	private String extId;
 	
@@ -86,172 +88,213 @@ public class Individual extends AuditableCollectedEntity {
 //	@OneToMany(mappedBy="individual",cascade=CascadeType.ALL)
 //	private Set<Membership> memberships = new HashSet<>();
 	
-	public long getId() {
+	public long getId()
+	{
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(long id)
+	{
 		this.id = id;
 	}
 
-	public Date getDob() {
+	public Date getDob()
+	{
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(Date dob)
+	{
 		this.dob = dob;
 	}
 
-	public String getDobAspect() {
+	public String getDobAspect()
+	{
 		return dobAspect;
 	}
 
-	public void setDobAspect(String dobAspect) {
+	public void setDobAspect(String dobAspect)
+	{
 		this.dobAspect = dobAspect;
 	}
 
-	public String getFirstName() {
+	public String getFirstName()
+	{
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
+	public void setFirstName(String firstName)
+	{
 		this.firstName = firstName;
 	}
 
-	public String getMiddleName() {
+	public String getMiddleName()
+	{
 		return middleName;
 	}
 
-	public void setMiddleName(String middleName) {
+	public void setMiddleName(String middleName)
+	{
 		this.middleName = middleName;
 	}
 
-	public String getLastName() {
+	public String getLastName()
+	{
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	public void setLastName(String lastName)
+	{
 		this.lastName = lastName;
 	}
 
-	public String getGender() {
+	public String getGender()
+	{
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(String gender)
+	{
 		this.gender = gender;
 	}
 	
-	public Individual getMother() {
+	public Individual getMother()
+	{
 		return mother;
 	}
 
-	public void setMother(Individual mother) {
+	public void setMother(Individual mother)
+	{
 		this.mother = mother;
 	}
 
-	public Individual getFather() {
+	public Individual getFather()
+	{
 		return father;
 	}
 
-	public void setFather(Individual father) {
+	public void setFather(Individual father)
+	{
 		this.father = father;
 	}
 
-	public int getAge() {
+	public int getAge()
+	{
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(int age)
+	{
 		this.age = age;
 	}
 
-	public String getPhoneNumber() {
+	public String getPhoneNumber()
+	{
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber)
+	{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getOtherPhoneNumber() {
+	public String getOtherPhoneNumber()
+	{
 		return otherPhoneNumber;
 	}
 
-	public void setOtherPhoneNumber(String otherPhoneNumber) {
+	public void setOtherPhoneNumber(String otherPhoneNumber)
+	{
 		this.otherPhoneNumber = otherPhoneNumber;
 	}
 
-	public String getLanguagePreference() {
+	public String getLanguagePreference()
+	{
 		return languagePreference;
 	}
 
-	public void setLanguagePreference(String languagePreference) {
+	public void setLanguagePreference(String languagePreference)
+	{
 		this.languagePreference = languagePreference;
 	}
 
-	public String getPointOfContactName() {
+	public String getPointOfContactName()
+	{
 		return pointOfContactName;
 	}
 
-	public void setPointOfContactName(String pointOfContactName) {
+	public void setPointOfContactName(String pointOfContactName)
+	{
 		this.pointOfContactName = pointOfContactName;
 	}
 
-	public String getPointOfContactPhoneNumber() {
+	public String getPointOfContactPhoneNumber()
+	{
 		return pointOfContactPhoneNumber;
 	}
 
-	public void setPointOfContactPhoneNumber(String pointOfContactPhoneNumber) {
+	public void setPointOfContactPhoneNumber(String pointOfContactPhoneNumber)
+	{
 		this.pointOfContactPhoneNumber = pointOfContactPhoneNumber;
 	}
 
-	public String getNationality() {
+	public String getNationality()
+	{
 		return nationality;
 	}
 
-	public void setNationality(String nationality) {
+	public void setNationality(String nationality)
+	{
 		this.nationality = nationality;
 	}
 	
-//	public Set<Residency> getResidencies() {
+//	public Set<Residency> getResidencies() 
+//	{
 //		return residencies;
 //	}
 //
-//	public void setResidencies(Set<Residency> residencies) {
+//	public void setResidencies(Set<Residency> residencies)
+//	{
 //		this.residencies = residencies;
 //	}
 //
-//	public Set<Relationship> getRelationshipA() {
+//	public Set<Relationship> getRelationshipA()
+//	{
 //		return relationshipA;
 //	}
 //
-//	public void setRelationshipA(Set<Relationship> relationshipA) {
+//	public void setRelationshipA(Set<Relationship> relationshipA)
+//	{
 //		this.relationshipA = relationshipA;
 //	}
 //
-//	public Set<Relationship> getRelationshipB() {
+//	public Set<Relationship> getRelationshipB()
+//	{
 //		return relationshipB;
 //	}
 //
-//	public void setRelationshipB(Set<Relationship> relationshipB) {
+//	public void setRelationshipB(Set<Relationship> relationshipB)
+//	{
 //		this.relationshipB = relationshipB;
 //	}
 //
-//	public Set<Membership> getMemberships() {
+//	public Set<Membership> getMemberships()
+//	{
 //		return memberships;
 //	}
 //
-//	public void setMemberships(Set<Membership> membership) {
+//	public void setMemberships(Set<Membership> membership)
+//	{
 //		this.memberships = membership;
 //	}
 
-	public String getDip() {
+	public String getDip()
+	{
 		return dip;
 	}
 
-	public void setDip(String dip) {
+	public void setDip(String dip)
+	{
 		this.dip = dip;
 	}
-
 }

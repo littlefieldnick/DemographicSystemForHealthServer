@@ -4,7 +4,8 @@ import java.util.List;
 
 import edu.usm.cos375.model.Relationship;
 
-public interface RelationshipService {
+public interface RelationshipService
+{
 	void create(Relationship r);
     Relationship read(long id);
     List<Relationship> readAll();
