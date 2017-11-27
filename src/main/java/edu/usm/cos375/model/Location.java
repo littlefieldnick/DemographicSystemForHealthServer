@@ -2,6 +2,14 @@ package edu.usm.cos375.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="location")
 public class Location implements Serializable
 {
 	private static final long serialVersionUID = -7109179128929477921L;
@@ -27,6 +35,8 @@ public class Location implements Serializable
 	private String communityCode;
 	private String description;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getUuid()
 	{
 		return uuid;
