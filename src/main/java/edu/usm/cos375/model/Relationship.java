@@ -2,8 +2,22 @@ package edu.usm.cos375.model;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="relationship")
 public class Relationship {
 	//TODO: Implement services, repository, and controller. Add validation
+	
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	long id;
 	
 	Individual individualA;
 	Individual individualB;
@@ -61,6 +75,15 @@ public class Relationship {
 
 	public void setEndType(String endType) {
 		this.endType = endType;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+		
+	}
+
+	public Long getId() {
+		return this.id;
 	}
 	
 }
