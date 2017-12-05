@@ -2,9 +2,11 @@ package edu.usm.cos375.repository.impl;
 
 import edu.usm.cos375.model.SocialGroup;
 import edu.usm.cos375.repository.SocialGroupRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class InMemorySocialGroupRepository implements SocialGroupRepository {
     private final Map<Integer, SocialGroup> database = new LinkedHashMap<>();
     private int id = 1;
