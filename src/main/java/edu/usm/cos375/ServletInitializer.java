@@ -1,16 +1,17 @@
 package edu.usm.cos375;
 
-import edu.usm.cos375.filter.CORSFilter;
+import javax.servlet.Filter;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.Filter;
+import edu.usm.cos375.filter.CORSFilter;
 
 public class ServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer
 {
     @Override
     protected Class<?>[] getServletConfigClasses()
     {
-        return new Class[] { WebConfig.class };
+        return new Class[] { RestConfig.class };
     }
 
     @Override
