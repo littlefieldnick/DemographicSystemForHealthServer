@@ -16,7 +16,7 @@ public class LocationHierarchyLevel implements UuidIdentifiable, Serializable
     @NotNull
     String name;
     
-    int keyIdentifier;
+    Integer keyIdentifier;
 
     @Override
     public String getUuid()
@@ -40,12 +40,12 @@ public class LocationHierarchyLevel implements UuidIdentifiable, Serializable
         this.name = name;
     }
 
-    public int getKeyIdentifier()
+    public Integer getKeyIdentifier()
     {
         return keyIdentifier;
     }
 
-    public void setKeyIdentifier(int keyIdentifier)
+    public void setKeyIdentifier(Integer keyIdentifier)
     {
         this.keyIdentifier = keyIdentifier;
     }

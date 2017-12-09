@@ -6,12 +6,12 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
-public class LocationHierarchy implements UuidIdentifiable, Serializable
+public class LocationHierarchy implements Serializable
 {
     private static final long serialVersionUID = -5334850119671675888L;
 
     @Id
-    String uuid;
+    Long uuid;
 
     @NotNull
     String name;
@@ -21,14 +21,12 @@ public class LocationHierarchy implements UuidIdentifiable, Serializable
     @NotNull
     LocationHierarchyLevel level;
 
-    @Override
-    public String getUuid()
+    public Long getUuid()
     {
         return uuid;
     }
 
-    @Override
-    public void setUuid(String uuid)
+    public void setUuid(Long uuid)
     {
         this.uuid = uuid;
     }
