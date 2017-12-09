@@ -56,4 +56,9 @@ public class DefaultLocationHierarchyService implements LocationHierarchyService
 		return this.getAllHierarchies().stream()
 				.anyMatch(hierarchy -> hierarchy.equals(lh));
 	}
+
+	@Override
+	public LocationHierarchy findByName(String name) {
+		return repository.findByName(name);
+	}
 }

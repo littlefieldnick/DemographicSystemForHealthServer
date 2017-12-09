@@ -11,5 +11,6 @@ public interface LocationHierarchyService
     void update(LocationHierarchy hierarchy);
     void delete(Long id);
     List<LocationHierarchy> getAllHierarchies();
+    LocationHierarchy findByName(String name);
     boolean exists(LocationHierarchy hierarchy);
 }

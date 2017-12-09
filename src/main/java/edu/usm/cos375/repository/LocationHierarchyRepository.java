@@ -5,4 +5,5 @@ import edu.usm.cos375.model.LocationHierarchy;
 
 public interface LocationHierarchyRepository extends CrudRepository<LocationHierarchy, Long>
 {
+	LocationHierarchy findByName(String name);
 }
