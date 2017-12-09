@@ -2,6 +2,7 @@ package edu.usm.cos375.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -16,9 +17,11 @@ public class LocationHierarchy implements Serializable
     @NotNull
     String name;
 
+    @ManyToOne
     LocationHierarchy parent;
     
     @NotNull
+    @ManyToOne
     LocationHierarchyLevel level;
 
     public Long getUuid()

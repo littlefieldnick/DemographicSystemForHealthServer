@@ -35,17 +35,18 @@ public class LocationController
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> create(@RequestBody Location location, UriComponentsBuilder ucBuilder)
+	public ResponseEntity<Location> create(@RequestBody Location location, UriComponentsBuilder ucBuilder)
 	{
+		
 		if (service.read(location.getUuid()) != null)
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+			return new ResponseEntity<Location>(location, HttpStatus.CONFLICT);
 
 		service.create(location);
-
+		Location loc = service.getByExtId(location.getExtId());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(ucBuilder.path("/{id}").buildAndExpand(location.getUuid()).toUri());
 		
-		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<Location>(loc, headers, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)

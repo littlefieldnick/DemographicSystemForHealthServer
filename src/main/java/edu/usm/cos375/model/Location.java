@@ -2,6 +2,7 @@ package edu.usm.cos375.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,8 @@ public class Location implements Serializable
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long uuid;
+	@Column(name = "id")
+	long uuid;
 	
 	@NotNull
 	private String extId;
@@ -25,7 +27,7 @@ public class Location implements Serializable
 	@NotNull
 	private String locationName;
 	
-	@NotNull
+	
 	private LocationHierarchy locationHierarchy = new LocationHierarchy(); // contains the Location's hierarchical level
 	
 	private String locationType; // Urban, Rural, etc.
@@ -36,12 +38,12 @@ public class Location implements Serializable
 	@NotNull
 	private String longitude;
 	
-	public Long getUuid()
+	public long getUuid()
 	{
 		return uuid;
 	}
 
-	public void setUuid(Long uuid)
+	public void setUuid(long uuid)
 	{
 		this.uuid = uuid;
 	}

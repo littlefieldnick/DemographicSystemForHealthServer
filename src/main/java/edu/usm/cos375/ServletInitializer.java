@@ -29,6 +29,6 @@ public class ServletInitializer extends AbstractAnnotationConfigDispatcherServle
     @Override
     protected Filter[] getServletFilters()
     {
-        return new Filter[] { new CORSFilter() };
+        return null;//new Filter[] { new CORSFilter() };
     }
 }

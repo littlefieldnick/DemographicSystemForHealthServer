@@ -24,10 +24,7 @@ public class Fieldworker extends AuditableEntity
 	String lastName;
 	String password;
 	String confirmPassword;
-	
-	@NotNull
 	String passwordHash;
-
 	int idPrefix;
 	
 	public String getExtId()

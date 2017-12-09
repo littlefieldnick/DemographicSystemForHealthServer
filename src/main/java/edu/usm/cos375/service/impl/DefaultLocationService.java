@@ -56,4 +56,9 @@ public class DefaultLocationService implements LocationService
 		return this.getAllLocations().stream()
 				.anyMatch(location -> location.equals(l));
 	}
+
+	@Override
+	public Location getByExtId(String extId) {
+		return repository.findByExtId(extId);
+	}
 }

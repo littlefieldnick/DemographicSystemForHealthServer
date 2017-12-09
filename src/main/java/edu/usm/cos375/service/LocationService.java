@@ -8,6 +8,7 @@ public interface LocationService
 {
 	void create(Location l);
 	Location read(Long id);
+	Location getByExtId(String extId);
 	void update(Location l);
 	void delete(Long id);
 	List<Location> getAllLocations();
