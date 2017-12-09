@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="location")
@@ -14,29 +15,27 @@ public class Location implements Serializable
 {
 	private static final long serialVersionUID = -7109179128929477921L;
 	
-	private Long uuid;
-	private String extId;
-	private String locationName;
-	private String locationType;
-	private String latitude;
-	private String longitude;
-	private String accuracy;
-	private String altitude;
-	private Integer buildingNumber;
-	private Integer floorNumber;
-	private String provinceName;
-	private String regionName;
-	private String sectorName;
-	private String districtName;
-	private String subDistrictName;
-	private String localityName;
-	private String mapAreaName;
-	private String communityName;
-	private String communityCode;
-	private String description;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long uuid;
+	
+	@NotNull
+	private String extId;
+	
+	@NotNull
+	private String locationName;
+	
+	@NotNull
+	private LocationHierarchy locationHierarchy = new LocationHierarchy(); // contains the Location's hierarchical level
+	
+	private String locationType; // Urban, Rural, etc.
+	
+	@NotNull
+	private String latitude;
+	
+	@NotNull
+	private String longitude;
+	
 	public Long getUuid()
 	{
 		return uuid;
@@ -67,6 +66,16 @@ public class Location implements Serializable
 		this.locationName = locationName;
 	}
 
+	public LocationHierarchy getLocationHierarchy()
+	{
+		return locationHierarchy;
+	}
+
+	public void setLocationHierarchy(LocationHierarchy locationHierarchy)
+	{
+		this.locationHierarchy = locationHierarchy;
+	}
+	
 	public String getLocationType()
 	{
 		return locationType;
@@ -95,145 +104,5 @@ public class Location implements Serializable
 	public void setLongitude(String longitude)
 	{
 		this.longitude = longitude;
-	}
-
-	public String getAccuracy()
-	{
-		return accuracy;
-	}
-
-	public void setAccuracy(String accuracy)
-	{
-		this.accuracy = accuracy;
-	}
-
-	public String getAltitude()
-	{
-		return altitude;
-	}
-
-	public void setAltitude(String altitude)
-	{
-		this.altitude = altitude;
-	}
-
-	public Integer getBuildingNumber()
-	{
-		return buildingNumber;
-	}
-
-	public void setBuildingNumber(Integer buildingNumber)
-	{
-		this.buildingNumber = buildingNumber;
-	}
-
-	public Integer getFloorNumber()
-	{
-		return floorNumber;
-	}
-
-	public void setFloorNumber(Integer floorNumber)
-	{
-		this.floorNumber = floorNumber;
-	}
-
-	public String getProvinceName()
-	{
-		return provinceName;
-	}
-
-	public void setProvinceName(String provinceName)
-	{
-		this.provinceName = provinceName;
-	}
-
-	public String getRegionName()
-	{
-		return regionName;
-	}
-
-	public void setRegionName(String regionName)
-	{
-		this.regionName = regionName;
-	}
-
-	public String getSectorName()
-	{
-		return sectorName;
-	}
-
-	public void setSectorName(String sectorName)
-	{
-		this.sectorName = sectorName;
-	}
-
-	public String getDistrictName()
-	{
-		return districtName;
-	}
-
-	public void setDistrictName(String districtName)
-	{
-		this.districtName = districtName;
-	}
-
-	public String getSubDistrictName()
-	{
-		return subDistrictName;
-	}
-
-	public void setSubDistrictName(String subDistrictName)
-	{
-		this.subDistrictName = subDistrictName;
-	}
-
-	public String getLocalityName()
-	{
-		return localityName;
-	}
-
-	public void setLocalityName(String localityName)
-	{
-		this.localityName = localityName;
-	}
-
-	public String getMapAreaName()
-	{
-		return mapAreaName;
-	}
-
-	public void setMapAreaName(String mapAreaName)
-	{
-		this.mapAreaName = mapAreaName;
-	}
-
-	public String getCommunityName()
-	{
-		return communityName;
-	}
-
-	public void setCommunityName(String communityName)
-	{
-		this.communityName = communityName;
-	}
-
-	public String getCommunityCode()
-	{
-		return communityCode;
-	}
-
-	public void setCommunityCode(String communityCode)
-	{
-		this.communityCode = communityCode;
-	}
-
-	public String getDescription()
-	{
-		return description;
-	}
-
-	public void setDescription(String description)
-	{
-		this.description = description;
 	}
 }
