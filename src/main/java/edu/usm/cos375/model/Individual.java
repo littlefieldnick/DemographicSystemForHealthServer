@@ -1,12 +1,16 @@
 package edu.usm.cos375.model;
 
 import java.util.Date;
+import java.util.Set;
+import java.util.HashSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -20,7 +24,7 @@ import javax.validation.constraints.Past;
 
 @Entity
 @Table(name="individual")
-public class Individual extends AuditableCollectedEntity
+public class Individual
 {
 	private static final long serialVersionUID = -424712868173326154L;
 
@@ -45,12 +49,7 @@ public class Individual extends AuditableCollectedEntity
 	
 	@NotNull
 	private String gender;
-	
-	@Column
-	private Individual mother;
-	
-	@Column
-	private Individual father;
+
 	
 	@Column
 	private int age;
@@ -76,17 +75,15 @@ public class Individual extends AuditableCollectedEntity
 	@Column
 	private String nationality;
 	
-//	@OneToMany(mappedBy="individual",cascade=CascadeType.ALL)
-//	private Set <Residency> residencies = new HashSet<>();
-//	
-//	@OneToMany(mappedBy="individualA",cascade=CascadeType.ALL)
-//	private Set<Relationship> relationshipA = new HashSet<>();
-//	
-//	@OneToMany(mappedBy="individualB",cascade=CascadeType.ALL)
-//	private Set<Relationship> relationshipB = new HashSet<>();
-//	
-//	@OneToMany(mappedBy="individual",cascade=CascadeType.ALL)
-//	private Set<Membership> memberships = new HashSet<>();
+
+	@OneToMany(mappedBy="individualA",cascade=CascadeType.ALL)
+	private Set<Relationship> relationshipA = new HashSet<>();
+	
+	@OneToMany(mappedBy="individualB",cascade=CascadeType.ALL)
+	private Set<Relationship> relationshipB = new HashSet<>();
+	
+	@OneToMany(mappedBy="individual",cascade=CascadeType.ALL)
+	private Set<Membership> memberships = new HashSet<>();
 	
 	public long getId()
 	{
@@ -158,25 +155,6 @@ public class Individual extends AuditableCollectedEntity
 		this.gender = gender;
 	}
 	
-	public Individual getMother()
-	{
-		return mother;
-	}
-
-	public void setMother(Individual mother)
-	{
-		this.mother = mother;
-	}
-
-	public Individual getFather()
-	{
-		return father;
-	}
-
-	public void setFather(Individual father)
-	{
-		this.father = father;
-	}
 
 	public int getAge()
 	{
@@ -248,45 +226,36 @@ public class Individual extends AuditableCollectedEntity
 		this.nationality = nationality;
 	}
 	
-//	public Set<Residency> getResidencies() 
-//	{
-//		return residencies;
-//	}
-//
-//	public void setResidencies(Set<Residency> residencies)
-//	{
-//		this.residencies = residencies;
-//	}
-//
-//	public Set<Relationship> getRelationshipA()
-//	{
-//		return relationshipA;
-//	}
-//
-//	public void setRelationshipA(Set<Relationship> relationshipA)
-//	{
-//		this.relationshipA = relationshipA;
-//	}
-//
-//	public Set<Relationship> getRelationshipB()
-//	{
-//		return relationshipB;
-//	}
-//
-//	public void setRelationshipB(Set<Relationship> relationshipB)
-//	{
-//		this.relationshipB = relationshipB;
-//	}
-//
-//	public Set<Membership> getMemberships()
-//	{
-//		return memberships;
-//	}
-//
-//	public void setMemberships(Set<Membership> membership)
-//	{
-//		this.memberships = membership;
-//	}
+
+	public Set<Relationship> getRelationshipA()
+	{
+		return relationshipA;
+	}
+
+	public void setRelationshipA(Set<Relationship> relationshipA)
+	{
+		this.relationshipA = relationshipA;
+	}
+
+	public Set<Relationship> getRelationshipB()
+	{
+		return relationshipB;
+	}
+
+	public void setRelationshipB(Set<Relationship> relationshipB)
+	{
+		this.relationshipB = relationshipB;
+	}
+
+	public Set<Membership> getMemberships()
+	{
+		return memberships;
+	}
+
+	public void setMemberships(Set<Membership> membership)
+	{
+		this.memberships = membership;
+	}
 
 	public String getDip()
 	{

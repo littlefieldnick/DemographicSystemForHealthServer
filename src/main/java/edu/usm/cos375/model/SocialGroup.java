@@ -1,22 +1,38 @@
 package edu.usm.cos375.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name="socialGroup")
 public class SocialGroup {
-    @NotNull
-    private int id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+    private long id;
 
+	@NotNull
+	private String extId; 
+	
     @NotNull
     private String socialGroupType;
 
     @NotNull
     private String groupMembership;
+    
+    private Location location;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -35,4 +51,20 @@ public class SocialGroup {
     public void setGroupMembership(String groupMembership) {
         this.groupMembership = groupMembership;
     }
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public String getExtId() {
+		return extId;
+	}
+
+	public void setExtId(String extId) {
+		this.extId = extId;
+	}
 }

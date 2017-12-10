@@ -2,9 +2,11 @@ package edu.usm.cos375.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,5 +19,6 @@ public class Membership
 	@Column(name="id")
 	long id;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
 	Individual individual;
 }

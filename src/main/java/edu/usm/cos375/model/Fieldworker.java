@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="fieldworker")
-public class Fieldworker extends AuditableEntity
+public class Fieldworker
 {
 	private static final long serialVersionUID = -2635197895396416285L;
 

@@ -18,7 +18,9 @@ public class Residency
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
-	Individual individual;
+	long id;
+	
+	//Individual individual;
 	//Location location; //Leave commented out until implemented
 	
 	Calendar startDate;
@@ -27,15 +29,15 @@ public class Residency
 	String startType;
 	String endType;
 	
-	public Individual getIndividual()
-	{
-		return individual;
-	}
-	
-	public void setIndividual(Individual individual)
-	{
-		this.individual = individual;
-	}
+//	public Individual getIndividual()
+//	{
+//		return individual;
+//	}
+//	
+//	public void setIndividual(Individual individual)
+//	{
+//		this.individual = individual;
+//	}
 	
 	public Calendar getStartDate()
 	{
