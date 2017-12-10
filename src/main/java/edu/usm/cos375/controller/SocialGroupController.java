@@ -34,16 +34,16 @@ public class SocialGroupController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> create(@RequestBody SocialGroup socialGroup, UriComponentsBuilder ucBuilder) {
-        if(socialGroupService.getSocialGroup(socialGroup.getId()) != null) {
-            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+    public ResponseEntity<SocialGroup> create(@RequestBody SocialGroup socialGroup, UriComponentsBuilder ucBuilder) {
+        if(socialGroupService.findByExtId(socialGroup.getExtId()) != null) {
+            return new ResponseEntity<SocialGroup>(socialGroup, HttpStatus.CONFLICT);
         }
 
         socialGroupService.add(socialGroup);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/socialGroup/{id}").buildAndExpand(socialGroup.getId()).toUri());
-
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        socialGroup = socialGroupService.findByExtId(socialGroup.getExtId());
+        return new ResponseEntity<SocialGroup>(socialGroup, headers, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

@@ -8,6 +8,7 @@ public interface IndividualService
 {
     List<Individual> getAllIndividuals();
     Individual getIndividual(long id);
+    Individual findByExtId(String extId);
     void add(Individual individual);
     void update(Individual individual);
     void remove(long id);

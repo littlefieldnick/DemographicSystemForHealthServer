@@ -6,4 +6,5 @@ import edu.usm.cos375.model.Individual;
 
 public interface IndividualRepository extends CrudRepository<Individual, Long>
 {
+	Individual findByExtId(String extId);
 }

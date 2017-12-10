@@ -15,4 +15,6 @@ public interface SocialGroupService {
     void update(SocialGroup socialGroup);
 
     void remove(long id);
+    
+    SocialGroup findByExtId(String extId);
 }

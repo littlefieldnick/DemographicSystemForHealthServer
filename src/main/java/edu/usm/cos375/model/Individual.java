@@ -266,4 +266,12 @@ public class Individual
 	{
 		this.dip = dip;
 	}
+
+	public String getExtId() {
+		return extId;
+	}
+
+	public void setExtId(String extId) {
+		this.extId = extId;
+	}
 }

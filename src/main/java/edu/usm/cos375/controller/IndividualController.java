@@ -15,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import edu.usm.cos375.exception.ResourceNotFoundException;
 import edu.usm.cos375.model.Individual;
+import edu.usm.cos375.model.Location;
 import edu.usm.cos375.service.IndividualService;
 
 @RestController
@@ -53,13 +54,18 @@ public class IndividualController
 
 	//Add an individual 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> create(@RequestBody Individual individual, UriComponentsBuilder ucBuilder)
+	public ResponseEntity<Individual> create(@RequestBody Individual individual, UriComponentsBuilder ucBuilder)
 	{
 		individualService.add(individual);
+		if (individualService.findByExtId(individual.getExtId()) != null)
+			return new ResponseEntity<Individual>(individual, HttpStatus.CONFLICT);
+
+		individualService.add(individual);
+		Individual ind = individualService.findByExtId(individual.getExtId());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(ucBuilder.path("/individuals/{id}").buildAndExpand(individual.getId()).toUri());
 
-		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<Individual>(ind, headers, HttpStatus.CREATED);
 	}
 
 	//Update an existing user

@@ -54,4 +54,9 @@ public class DefaultIndividualService implements IndividualService
 	{
 		return this.repository.exists(id);
 	}
+
+	@Override
+	public Individual findByExtId(String extId) {
+		return this.repository.findByExtId(extId);
+	}
 }
