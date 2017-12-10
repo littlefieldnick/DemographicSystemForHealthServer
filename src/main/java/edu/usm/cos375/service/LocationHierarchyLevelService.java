@@ -11,6 +11,6 @@ public interface LocationHierarchyLevelService {
     void update(LocationHierarchyLevel level);
     void delete(Long id);
     List<LocationHierarchyLevel> getAllLevels();
-    LocationHierarchyLevel findByName(String name);
+    LocationHierarchyLevel findByKeyIdentifier(Integer level);
     boolean exists(LocationHierarchyLevel level);
 }

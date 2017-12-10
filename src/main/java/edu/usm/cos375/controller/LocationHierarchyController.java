@@ -45,8 +45,8 @@ public class LocationHierarchyController
 		if (service.findByName(hierarchy.getName()) != null)
 			return new ResponseEntity<LocationHierarchy>(hierarchy, HttpStatus.CONFLICT);
 
-		if(levelService.findByName(hierarchy.getLevel().getName()) != null)
-			levelService.update(hierarchy.getLevel());
+		if(levelService.findByKeyIdentifier(hierarchy.getLevel().getKeyIdentifier()) != null)
+			hierarchy.setLevel((levelService.findByKeyIdentifier(hierarchy.getLevel().getKeyIdentifier())));
 		else
 			levelService.create(hierarchy.getLevel());
 		

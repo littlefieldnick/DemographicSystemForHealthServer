@@ -47,8 +47,8 @@ public class DefaultLocationHierarchyLevelService implements LocationHierarchyLe
 	}
 
 	@Override
-	public LocationHierarchyLevel findByName(String name) {
-		return repository.findByName(name);
+	public LocationHierarchyLevel findByKeyIdentifier(Integer identifier) {
+		return repository.findByKeyIdentifier(identifier);
 	}
 
 	@Override
