@@ -6,4 +6,5 @@ import edu.usm.cos375.model.Relationship;
 
 public interface RelationshipRepository extends CrudRepository<Relationship, Long>
 {
+	Relationship findByExtId(String extId);
 }

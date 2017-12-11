@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+
+import edu.usm.cos375.model.constraint.CheckFieldNotBlank;
+import edu.usm.cos375.model.constraint.CheckInteger;
+
 import java.io.Serializable;
 
 @Entity
@@ -20,12 +24,13 @@ public class LocationHierarchy implements Serializable
     Long uuid;
 
     @NotNull
+    @CheckFieldNotBlank
     String name;
 
     @ManyToOne
     LocationHierarchy parent;
     
-    @NotNull
+    
     @ManyToOne
     LocationHierarchyLevel level;
 

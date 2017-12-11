@@ -8,6 +8,7 @@ public interface RelationshipService
 {
 	void create(Relationship r);
     Relationship read(long id);
+    Relationship findByExtId(String extId);
     List<Relationship> readAll();
     void update(long id, Relationship r);
     void remove(long id);

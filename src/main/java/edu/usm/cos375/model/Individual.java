@@ -12,8 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import edu.usm.cos375.model.constraint.CheckFieldNotBlank;
 
 /*
  * Individual class represents a single individual in the initial census. 
@@ -33,24 +38,28 @@ public class Individual
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id; // For purposes of temporary in memory storage
 	
+	@NotNull
+	@Size(min=1)
 	private String extId;
 	
-	@Past
+	 @Past(message = "Date of birth must a date in the past")
+	 @Temporal(TemporalType.DATE)
 	private Date dob;
-	private String dobAspect;
+
 	
 	@NotNull
+	@CheckFieldNotBlank
 	private String firstName;
 	
 	private String middleName;
 	
 	@NotNull
+	@CheckFieldNotBlank
 	private String lastName;
 	
 	@NotNull
 	private String gender;
 
-	
 	@Column
 	private int age;
 	
@@ -103,16 +112,6 @@ public class Individual
 	public void setDob(Date dob)
 	{
 		this.dob = dob;
-	}
-
-	public String getDobAspect()
-	{
-		return dobAspect;
-	}
-
-	public void setDobAspect(String dobAspect)
-	{
-		this.dobAspect = dobAspect;
 	}
 
 	public String getFirstName()

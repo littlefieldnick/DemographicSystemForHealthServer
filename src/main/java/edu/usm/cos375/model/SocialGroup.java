@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import edu.usm.cos375.model.constraint.CheckFieldNotBlank;
+
 @Entity
 @Table(name="socialGroup")
 public class SocialGroup {
@@ -21,9 +23,11 @@ public class SocialGroup {
 	private String extId; 
 	
     @NotNull
+    @CheckFieldNotBlank
     private String socialGroupType;
 
     @NotNull
+    @CheckFieldNotBlank
     private String groupMembership;
     
     private Location location;

@@ -1,6 +1,7 @@
 package edu.usm.cos375.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import edu.usm.cos375.model.Individual;
 import edu.usm.cos375.model.Relationship;
+import edu.usm.cos375.service.IndividualService;
 import edu.usm.cos375.service.RelationshipService;
 
 @RestController
@@ -22,6 +25,9 @@ public class RelationshipController
 {
 	@Autowired
 	RelationshipService relationshipService;
+	
+	@Autowired
+	IndividualService individualService;
 
 	//Get all the current relationships
 	@RequestMapping(method = RequestMethod.GET)
@@ -52,18 +58,33 @@ public class RelationshipController
 
 	//Add an individual 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> create(@RequestBody Relationship r, UriComponentsBuilder ucBuilder)
+	public ResponseEntity<Relationship> create(@RequestBody Relationship r, UriComponentsBuilder ucBuilder)
 	{
-		if(relationshipService.read(r.getId()) != null)
+		if(relationshipService.findByExtId(r.getExtId()) != null)
 		{
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+			return new ResponseEntity<Relationship>(HttpStatus.CONFLICT);
 		}
 
 		relationshipService.create(r);
+		
+		//Update individuals set of relationships. 
+		Individual a = r.getIndividualA();
+		Individual b = r.getIndividualB();
+		Set<Relationship> indA = a.getRelationshipA();
+		Set<Relationship> indB = b.getRelationshipB();
+		indA.add(r);
+		indB.add(r);
+		a.setRelationshipA(indA);
+		b.setRelationshipB(indB);
+		individualService.update(a);
+		individualService.update(b);
+	
+		
+		Relationship rel =relationshipService.findByExtId(r.getExtId());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(ucBuilder.path("/individuals/{id}").buildAndExpand(r.getId()).toUri());
 
-		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<Relationship>(rel, headers, HttpStatus.CREATED);
 	}
 
 	//Update an existing user

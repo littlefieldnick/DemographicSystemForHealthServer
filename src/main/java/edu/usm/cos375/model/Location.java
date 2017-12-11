@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import edu.usm.cos375.model.constraint.CheckFieldNotBlank;
+
 @Entity
 @Table(name="location")
 public class Location implements Serializable
@@ -22,9 +24,11 @@ public class Location implements Serializable
 	long uuid;
 	
 	@NotNull
+	@CheckFieldNotBlank
 	private String extId;
 	
 	@NotNull
+	@CheckFieldNotBlank
 	private String locationName;
 	
 	

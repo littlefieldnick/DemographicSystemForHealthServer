@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+
+import edu.usm.cos375.model.constraint.CheckFieldNotBlank;
+import edu.usm.cos375.model.constraint.CheckInteger;
+
 import java.io.Serializable;
 
 @Entity
@@ -20,8 +24,10 @@ public class LocationHierarchyLevel implements Serializable
     long uuid;
 
     @NotNull
+    @CheckFieldNotBlank
     String name;
     
+    @CheckInteger
     Integer keyIdentifier;
 
     public long getUuid()

@@ -50,4 +50,9 @@ public class DefaultRelationshipService implements RelationshipService
 	{
 		this.repository.delete(id);
 	}
+
+	@Override
+	public Relationship findByExtId(String extId) {
+		return this.repository.findByExtId(extId);
+	}
 }

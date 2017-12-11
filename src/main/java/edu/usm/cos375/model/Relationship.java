@@ -11,6 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import edu.usm.cos375.model.constraint.CheckFieldNotBlank;
 
 @Entity
 @Table(name="relationship")
@@ -23,15 +31,28 @@ public class Relationship
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
 	
+	@NotNull
+	@CheckFieldNotBlank
+	@Size(min=1)
+	String extId;
+	
+	@NotNull
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
 	Individual individualA;
     
+	@NotNull
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
 	Individual individualB;
 	
+    @NotNull
 	String aIsToB;
-	
+    
+	@Past
+	@Temporal(TemporalType.DATE)
 	Calendar startDate;
+	
+	@Future
+	@Temporal(TemporalType.DATE)
 	Calendar endDate;
 	
 	String endType;
@@ -104,5 +125,13 @@ public class Relationship
 	public Long getId()
 	{
 		return this.id;
+	}
+
+	public String getExtId() {
+		return extId;
+	}
+
+	public void setExtId(String extId) {
+		this.extId = extId;
 	}
 }

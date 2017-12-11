@@ -6,7 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import edu.usm.cos375.model.constraint.CheckFieldNotBlank;
 
 @Entity
 @Table(name="fieldworker")
@@ -19,13 +23,19 @@ public class Fieldworker
 	@Column(name = "id")
 	long id;
 	
+	@NotNull
+	@CheckFieldNotBlank
+	@Size(min=1)
 	String extId;
+	
+	@NotNull
+	@CheckFieldNotBlank
 	String firstName;
+	
+	@NotNull
+	@CheckFieldNotBlank
 	String lastName;
-	String password;
-	String confirmPassword;
-	String passwordHash;
-	int idPrefix;
+	
 	
 	public String getExtId()
 	{
@@ -57,44 +67,6 @@ public class Fieldworker
 		this.lastName = lastName;
 	}
 	
-	public String getPassword()
-	{
-		return password;
-	}
-	
-	public void setPassword(String password)
-	{
-		this.password = password;
-	}
-	
-	public String getConfirmPassword()
-	{
-		return confirmPassword;
-	}
-	
-	public void setConfirmPassword(String confirmPassword)
-	{
-		this.confirmPassword = confirmPassword;
-	}
-	
-	public String getPasswordHash()
-	{
-		return passwordHash;
-	}
-	
-	public void setPasswordHash(String passwordHash)
-	{
-		this.passwordHash = passwordHash;
-	}
-	public int getIdPrefix()
-	{
-		return idPrefix;
-	}
-	
-	public void setIdPrefix(int idPrefix)
-	{
-		this.idPrefix = idPrefix;
-	}
 
 	public long getId()
 	{
