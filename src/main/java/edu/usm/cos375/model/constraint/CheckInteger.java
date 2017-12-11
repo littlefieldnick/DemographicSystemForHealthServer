@@ -10,11 +10,11 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import edu.usm.cos375.model.constraint.impl.CheckFieldNotBlankImplementation;
+import edu.usm.cos375.model.constraint.impl.CheckIntegerImplementation;
 
 @Target({METHOD, FIELD, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = CheckFieldNotBlankImplementation.class)
+@Constraint(validatedBy = CheckIntegerImplementation.class)
 @Documented
 public @interface CheckInteger {
 	String message () default "Field requires a integer that is greater than or equal to 0.";

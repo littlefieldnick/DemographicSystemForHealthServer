@@ -3,6 +3,7 @@ package edu.usm.cos375.exception;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.NonUniqueResultException;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import edu.usm.cos375.annotation.RestAPIControllerAdvice;
+import edu.usm.cos375.exception.RestExceptionHandler.ErrorItem;
+import edu.usm.cos375.exception.RestExceptionHandler.ErrorResponse;
 
 @RestAPIControllerAdvice
 public class RestExceptionHandler
@@ -37,7 +40,7 @@ public class RestExceptionHandler
 		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 	}
 
-	//Handle the TransactionSystemException thrown when a database violation happens.
+//	//Handle the TransactionSystemException thrown when a database violation happens.
 	@ExceptionHandler(TransactionSystemException.class)
 	public ResponseEntity<ErrorResponse> handle(TransactionSystemException e)
 	{
@@ -51,18 +54,15 @@ public class RestExceptionHandler
 		return new ResponseEntity<ErrorResponse>(errors, HttpStatus.BAD_REQUEST);
 	}
 	
-	//Handle the TransactionSystemException thrown when a database violation happens.
-	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
-	public ResponseEntity<ErrorResponse> handle(MethodArgumentTypeMismatchException e)
-	{
+	@ExceptionHandler(NonUniqueResultException.class)
+	public ResponseEntity<ErrorResponse> handle(NonUniqueResultException e){
 		ErrorResponse errors = new ErrorResponse();
 		ErrorItem error = new ErrorItem();
-		Throwable t = e.getCause();
-		error.setCode(HttpStatus.BAD_REQUEST.toString());
-		error.setMessage(t.getMessage());
+		error.setMessage(e.getMessage());
+		error.setCode(HttpStatus.CONFLICT.toString());
 		errors.addError(error);
-
-		return new ResponseEntity<ErrorResponse>(errors, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+		
 	}
 
 	public static class ErrorItem

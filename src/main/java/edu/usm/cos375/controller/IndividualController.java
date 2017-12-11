@@ -56,7 +56,6 @@ public class IndividualController
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Individual> create(@RequestBody Individual individual, UriComponentsBuilder ucBuilder)
 	{
-		individualService.add(individual);
 		if (individualService.findByExtId(individual.getExtId()) != null)
 			return new ResponseEntity<Individual>(individual, HttpStatus.CONFLICT);
 
