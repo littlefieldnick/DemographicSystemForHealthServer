@@ -67,18 +67,19 @@ public class RelationshipController
 
 		relationshipService.create(r);
 		
-		//Update individuals set of relationships. 
-		Individual a = r.getIndividualA();
-		Individual b = r.getIndividualB();
-		Set<Relationship> indA = a.getRelationshipA();
-		Set<Relationship> indB = b.getRelationshipB();
-		indA.add(r);
-		indB.add(r);
-		a.setRelationshipA(indA);
-		b.setRelationshipB(indB);
-		individualService.update(a);
-		individualService.update(b);
+//		//Update individuals set of relationships. 
+//		Individual a = r.getIndividualA();
+//		Individual b = r.getIndividualB();
+//		Set<Relationship> indA = a.getRelationshipA();
+//		Set<Relationship> indB = b.getRelationshipB();
+//		indA.add(r);
+//		indB.add(r);
+//		a.setRelationshipA(indA);
+//		b.setRelationshipB(indB);
+//		individualService.update(a);
+//		individualService.update(b);
 	
+		
 		
 		Relationship rel =relationshipService.findByExtId(r.getExtId());
 		HttpHeaders headers = new HttpHeaders();

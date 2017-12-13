@@ -11,6 +11,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import edu.usm.cos375.annotation.RestAPIControllerAdvice;
+import edu.usm.cos375.model.constraint.CheckInteger;
+import edu.usm.cos375.model.constraint.impl.CheckIntegerImplementation;
 
 @Configuration
 @EnableWebMvc

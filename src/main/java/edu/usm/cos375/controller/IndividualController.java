@@ -16,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import edu.usm.cos375.exception.ResourceNotFoundException;
 import edu.usm.cos375.model.Individual;
 import edu.usm.cos375.model.Location;
+import edu.usm.cos375.model.SocialGroup;
 import edu.usm.cos375.service.IndividualService;
 
 @RestController
@@ -32,7 +33,7 @@ public class IndividualController
 		List<Individual> individuals = individualService.getAllIndividuals();
 		if(individuals == null || individuals.isEmpty())
 		{
-			throw new ResourceNotFoundException();
+			return new ResponseEntity<List<Individual>>(HttpStatus.NO_CONTENT);
 		}
 
 		return new ResponseEntity<List<Individual>>(individuals, HttpStatus.OK);
@@ -46,7 +47,7 @@ public class IndividualController
 
         if (individual == null)
         {
-        	throw new ResourceNotFoundException();
+        	return new ResponseEntity<Individual>(HttpStatus.NO_CONTENT);
         }
 
         return new ResponseEntity<Individual>(individual, HttpStatus.OK);

@@ -36,12 +36,10 @@ public class Relationship
 	@Size(min=1)
 	String extId;
 	
-	@NotNull
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
 	Individual individualA;
     
-	@NotNull
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
 	Individual individualB;
 	
     @NotNull

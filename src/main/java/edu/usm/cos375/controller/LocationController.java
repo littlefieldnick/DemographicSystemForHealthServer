@@ -38,7 +38,7 @@ public class LocationController
 	public ResponseEntity<Location> create(@RequestBody Location location, UriComponentsBuilder ucBuilder)
 	{
 		
-		if (service.read(location.getUuid()) != null)
+		if (service.getByExtId(location.getExtId()) != null)
 			return new ResponseEntity<Location>(location, HttpStatus.CONFLICT);
 
 		service.create(location);
