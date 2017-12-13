@@ -39,6 +39,19 @@ public class IndividualController
 		return new ResponseEntity<List<Individual>>(individuals, HttpStatus.OK);
 	}
 
+	//Get individuals by first name and last name
+	@RequestMapping(value = "{firstName}/{lastName}", method = RequestMethod.GET)
+	public ResponseEntity<List<Individual>> getByname(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName)
+	{
+		List<Individual> individuals = individualService.findByFirstNameAndLastName(firstName, lastName);
+		if(individuals == null || individuals.isEmpty())
+		{
+			return new ResponseEntity<List<Individual>>(HttpStatus.NO_CONTENT);
+		}
+
+		return new ResponseEntity<List<Individual>>(individuals, HttpStatus.OK);
+	}
+
 	//Find an individual by their id
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public ResponseEntity<Individual> get(@PathVariable("id") long id)

@@ -15,7 +15,14 @@ public class DefaultIndividualService implements IndividualService
 {
 	@Autowired 
 	IndividualRepository repository;
-	
+
+	@Override
+	public List<Individual> findByFirstNameAndLastName(String firstName, String lastName)
+	{
+		return this.repository.findByFirstNameAndLastName(firstName, lastName);
+	}
+
+
 	@Override
 	public List<Individual> getAllIndividuals()
 	{

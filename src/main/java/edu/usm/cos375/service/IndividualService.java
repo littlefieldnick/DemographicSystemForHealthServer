@@ -6,6 +6,7 @@ import edu.usm.cos375.model.Individual;
 
 public interface IndividualService
 {
+    List<Individual> findByFirstNameAndLastName(String firstName, String lastName);
     List<Individual> getAllIndividuals();
     Individual getIndividual(long id);
     Individual findByExtId(String extId);
